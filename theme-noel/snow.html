@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/_squadron/kit.css" />
+<style>
+  html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg-main, #14261d); }
+  .fall { position: absolute; top: -80px; pointer-events: none; user-select: none; animation: fall linear infinite; will-change: transform; }
+  .flake { color: #ffffff; line-height: 1; }
+  .santa { width: 44px; }
+  .ground { position: absolute; left: -10%; right: -10%; bottom: -40px; height: 80px; border-radius: 50% 50% 0 0; background: #f4f6f8; }
+  @keyframes fall { to { transform: translate(var(--drift), calc(100vh + 160px)) rotate(var(--spin)); } }
+  @media (prefers-reduced-motion: reduce) { .fall { animation-duration: 90s !important; } }
+</style>
+</head>
+<body>
+<div class="ground"></div>
+<script>
+  const rand = (min, max) => min + Math.random() * (max - min)
+  const drop = (el, seconds, spin) => {
+    el.classList.add('fall')
+    el.style.left = `${rand(-2, 98)}%`
+    el.style.animationDuration = `${seconds}s`
+    el.style.animationDelay = `-${rand(0, seconds)}s`
+    el.style.setProperty('--drift', `${rand(-80, 80)}px`)
+    el.style.setProperty('--spin', `${rand(-spin, spin)}deg`)
+    document.body.prepend(el)
+  }
+  for (let i = 0; i < 80; i++) {
+    const flake = document.createElement('span')
+    flake.className = 'flake'
+    flake.textContent = Math.random() < 0.6 ? '❄' : '•'
+    flake.style.fontSize = `${rand(8, 22)}px`
+    flake.style.opacity = rand(0.5, 1)
+    drop(flake, rand(6, 14), 360)
+  }
+  for (let i = 0; i < 6; i++) {
+    const santa = document.createElement('img')
+    santa.className = 'santa'
+    santa.src = 'santa.svg'
+    santa.alt = ''
+    drop(santa, rand(10, 20), 40)
+  }
+</script>
+</body>
+</html>
