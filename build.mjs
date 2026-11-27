@@ -46,8 +46,8 @@ const THEMES = {
   'theme-noel': {
     name: { en: 'Christmas theme 🎅', fr: 'Thème Noël 🎅' },
     description: {
-      en: 'Christmas colors, and a Snow panel where flakes and little Santas fall. Turn on one theme at a time.',
-      fr: 'Les couleurs de Noël, et un panneau Neige où tombent des flocons et des petits pères Noël. N’activez qu’un thème à la fois.',
+      en: 'Christmas colors, and a Snow panel where flakes and little Santas fall. Pick it in Settings › Theme.',
+      fr: 'Les couleurs de Noël, et un panneau Neige où tombent des flocons et des petits pères Noël. Choisissez-le dans Réglages › Thème.',
     },
     logo: 'santa.svg',
     contributes: {
@@ -62,9 +62,27 @@ const THEMES = {
     accent: '#f2c14e', link: '#8fc7ef', ok: '#6cc070', done: '#a8d672', err: '#ff6b6b', info: '#7fb8e6', purple: '#d88fd8',
     override: { 'bg-tabs': '#5c1419', ink: '#6e1219' },
   },
+  'theme-matrix': {
+    name: 'Matrix',
+    description: {
+      en: 'Phosphor green on black, and a Digital rain panel where green code falls. Pick it in Settings › Theme.',
+      fr: 'Du vert phosphore sur fond noir, et un panneau Pluie de code où tombent des caractères verts. Choisissez-le dans Réglages › Thème.',
+    },
+    logo: 'matrix.svg',
+    contributes: {
+      items: [
+        { slot: 'agent.tools', id: 'rain', label: { en: 'Digital rain', fr: 'Pluie de code' }, hint: { en: 'Let green code rain down', fr: 'Faire tomber la pluie de code verte' }, icon: 'logo', action: { 'panel.open': 'rain' } },
+        { slot: 'agent.menu', id: 'rain-menu', label: { en: 'Enter the Matrix', fr: 'Entrer dans la Matrice' }, icon: 'logo', action: { 'panel.open': 'rain' } },
+      ],
+      panels: [{ id: 'rain', title: { en: 'Digital rain', fr: 'Pluie de code' }, page: 'rain.html' }],
+    },
+    app: '#000000', side: '#020703', main: '#030a05', s1: '#08140b', s2: '#0c1c10', s3: '#122717', s4: '#18321e', s5: '#204027',
+    border: '#0f2515', strong: '#1e4a29', text: '#b9f6c6', bright: '#e8ffee', muted: '#6dbb7e',
+    accent: '#00ff41', link: '#8af5a8', ok: '#3fd9c4', done: '#d6ffd9', err: '#ff4b4b', info: '#4f8cff', purple: '#c58cff',
+  },
 }
 
-const VERSION = '0.1.0'
+const VERSION = '0.1.1'
 
 const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16))
 const hex = (c) => '#' + c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('')
@@ -127,8 +145,8 @@ const manifest = (id, t, theme) => ({
   squadron: '>=0.47.0',
   name: typeof t.name === 'string' ? { en: `${t.name} theme`, fr: `Thème ${t.name}` } : t.name,
   description: t.description ?? {
-    en: `Recolors Squadron with a dark palette inspired by ${t.from.en}. Turn on one theme at a time.`,
-    fr: `Recolore Squadron avec une palette sombre inspirée ${t.from.fr}. N’activez qu’un thème à la fois.`,
+    en: `Recolors Squadron with a dark palette inspired by ${t.from.en}. Pick it in Settings › Theme.`,
+    fr: `Recolore Squadron avec une palette sombre inspirée ${t.from.fr}. Choisissez-le dans Réglages › Thème.`,
   },
   logo: t.logo ?? 'logo.svg',
   contributes: { ...t.contributes, theme },

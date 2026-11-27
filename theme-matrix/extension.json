@@ -1,0 +1,127 @@
+{
+  "id": "theme-matrix",
+  "version": "0.1.1",
+  "api": 1,
+  "squadron": ">=0.47.0",
+  "name": {
+    "en": "Matrix theme",
+    "fr": "Thème Matrix"
+  },
+  "description": {
+    "en": "Phosphor green on black, and a Digital rain panel where green code falls. Pick it in Settings › Theme.",
+    "fr": "Du vert phosphore sur fond noir, et un panneau Pluie de code où tombent des caractères verts. Choisissez-le dans Réglages › Thème."
+  },
+  "logo": "matrix.svg",
+  "contributes": {
+    "items": [
+      {
+        "slot": "agent.tools",
+        "id": "rain",
+        "label": {
+          "en": "Digital rain",
+          "fr": "Pluie de code"
+        },
+        "hint": {
+          "en": "Let green code rain down",
+          "fr": "Faire tomber la pluie de code verte"
+        },
+        "icon": "logo",
+        "action": {
+          "panel.open": "rain"
+        }
+      },
+      {
+        "slot": "agent.menu",
+        "id": "rain-menu",
+        "label": {
+          "en": "Enter the Matrix",
+          "fr": "Entrer dans la Matrice"
+        },
+        "icon": "logo",
+        "action": {
+          "panel.open": "rain"
+        }
+      }
+    ],
+    "panels": [
+      {
+        "id": "rain",
+        "title": {
+          "en": "Digital rain",
+          "fr": "Pluie de code"
+        },
+        "page": "rain.html"
+      }
+    ],
+    "theme": {
+      "bg-app": "#000000",
+      "bg-sidebar": "#020703",
+      "bg-main": "#030a05",
+      "bg-rail": "#010402",
+      "bg-tabs": "#050e07",
+      "surface-1": "#08140b",
+      "surface-2": "#0c1c10",
+      "surface-3": "#122717",
+      "surface-4": "#18321e",
+      "surface-5": "#204027",
+      "menu": "#0f2214",
+      "menu-hover": "#18321e",
+      "overlay": "rgba(0, 0, 0, 0.74)",
+      "border": "#0f2515",
+      "border-strong": "#1e4a29",
+      "border-dashed": "#32663e",
+      "border-focus": "#5c8365",
+      "text": "#b9f6c6",
+      "text-strong": "#e8ffee",
+      "text-2": "#a2e4b0",
+      "text-3": "#97dba6",
+      "text-muted": "#6dbb7e",
+      "text-dim": "#62a972",
+      "text-faint": "#386342",
+      "ink": "#020704",
+      "accent": "#00ff41",
+      "accent-ink": "#00290a",
+      "accent-soft": "#8cffaa",
+      "accent-link": "#8af5a8",
+      "wait-bg": "#03310f",
+      "wait-border": "#019126",
+      "wait-text": "#f0fff4",
+      "wait-text-2": "#ccffd9",
+      "wait-muted": "#99ffb3",
+      "wait-btn": "#025417",
+      "wait-btn-text": "#ccffd9",
+      "wait-note": "#03230b",
+      "option": "#023b11",
+      "option-on": "#025818",
+      "option-off": "#03270c",
+      "ok": "#3fd9c4",
+      "ok-text": "#82e6d9",
+      "ok-line": "#2d9b8b",
+      "ok-bg": "rgba(63, 217, 196, 0.1)",
+      "done": "#d6ffd9",
+      "done-text": "#e2ffe4",
+      "err": "#ff4b4b",
+      "err-text": "#ff8a8a",
+      "err-muted": "#ffa5a5",
+      "err-bg": "#1c110c",
+      "err-border": "#812b28",
+      "err-ink": "#290c0c",
+      "err-pre": "#0a0303",
+      "del-bg": "rgba(255, 75, 75, 0.1)",
+      "del-line": "#a73433",
+      "background": "#4f8cff",
+      "background-line": "#345fa8",
+      "background-bg": "rgba(79, 140, 255, 0.12)",
+      "remote-dot": "#4f8cff",
+      "remote-text": "#95baff",
+      "merged": "#c58cff",
+      "merged-text": "#d4a9ff",
+      "sub-running": "#3fd9c4",
+      "sub-waiting": "#00ff41",
+      "sub-error": "#ff4b4b",
+      "sub-done": "#a1c2a4",
+      "sub-done-cell": "#6d856f",
+      "sub-stopped": "#32663e"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "id": "theme-high-contrast",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "api": 1,
   "squadron": ">=0.47.0",
   "name": {
@@ -8,8 +8,8 @@
     "fr": "Thème High Contrast"
   },
   "description": {
-    "en": "Recolors Squadron with a dark palette inspired by PhpStorm’s High Contrast theme. Turn on one theme at a time.",
-    "fr": "Recolore Squadron avec une palette sombre inspirée du thème Contraste élevé de PhpStorm. N’activez qu’un thème à la fois."
+    "en": "Recolors Squadron with a dark palette inspired by PhpStorm’s High Contrast theme. Pick it in Settings › Theme.",
+    "fr": "Recolore Squadron avec une palette sombre inspirée du thème Contraste élevé de PhpStorm. Choisissez-le dans Réglages › Thème."
   },
   "logo": "logo.svg",
   "contributes": {
