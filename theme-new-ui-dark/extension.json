@@ -1,6 +1,6 @@
 {
   "id": "theme-new-ui-dark",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "api": 1,
   "squadron": ">=0.47.0",
   "name": {
@@ -8,8 +8,8 @@
     "fr": "Thème New UI Dark"
   },
   "description": {
-    "en": "Recolors Squadron with a dark palette inspired by the dark theme of PhpStorm’s new UI. Turn on one theme at a time.",
-    "fr": "Recolore Squadron avec une palette sombre inspirée du thème sombre de la nouvelle interface de PhpStorm. N’activez qu’un thème à la fois."
+    "en": "Recolors Squadron with a dark palette inspired by the dark theme of PhpStorm’s new UI. Pick it in Settings › Theme.",
+    "fr": "Recolore Squadron avec une palette sombre inspirée du thème sombre de la nouvelle interface de PhpStorm. Choisissez-le dans Réglages › Thème."
   },
   "logo": "logo.svg",
   "contributes": {

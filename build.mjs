@@ -46,8 +46,8 @@ const THEMES = {
   'theme-noel': {
     name: { en: 'Christmas theme 🎅', fr: 'Thème Noël 🎅' },
     description: {
-      en: 'Christmas colors, and a Snow panel where flakes and little Santas fall. Turn on one theme at a time.',
-      fr: 'Les couleurs de Noël, et un panneau Neige où tombent des flocons et des petits pères Noël. N’activez qu’un thème à la fois.',
+      en: 'Christmas colors, and a Snow panel where flakes and little Santas fall. Pick it in Settings › Theme.',
+      fr: 'Les couleurs de Noël, et un panneau Neige où tombent des flocons et des petits pères Noël. Choisissez-le dans Réglages › Thème.',
     },
     logo: 'santa.svg',
     contributes: {
@@ -64,7 +64,7 @@ const THEMES = {
   },
 }
 
-const VERSION = '0.1.0'
+const VERSION = '0.1.1'
 
 const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16))
 const hex = (c) => '#' + c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('')
@@ -127,8 +127,8 @@ const manifest = (id, t, theme) => ({
   squadron: '>=0.47.0',
   name: typeof t.name === 'string' ? { en: `${t.name} theme`, fr: `Thème ${t.name}` } : t.name,
   description: t.description ?? {
-    en: `Recolors Squadron with a dark palette inspired by ${t.from.en}. Turn on one theme at a time.`,
-    fr: `Recolore Squadron avec une palette sombre inspirée ${t.from.fr}. N’activez qu’un thème à la fois.`,
+    en: `Recolors Squadron with a dark palette inspired by ${t.from.en}. Pick it in Settings › Theme.`,
+    fr: `Recolore Squadron avec une palette sombre inspirée ${t.from.fr}. Choisissez-le dans Réglages › Thème.`,
   },
   logo: t.logo ?? 'logo.svg',
   contributes: { ...t.contributes, theme },
