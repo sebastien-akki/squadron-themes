@@ -43,6 +43,25 @@ const THEMES = {
     border: '#373e4c', strong: '#4c566a', text: '#e5e9f0', bright: '#eceff4', muted: '#aab3c3',
     accent: '#ebcb8b', link: '#88c0d0', ok: '#8fbcbb', done: '#a3be8c', err: '#d57780', info: '#81a1c1', purple: '#b48ead',
   },
+  'theme-noel': {
+    name: { en: 'Christmas theme 🎅', fr: 'Thème Noël 🎅' },
+    description: {
+      en: 'Christmas colors, and a Snow panel where flakes and little Santas fall. Turn on one theme at a time.',
+      fr: 'Les couleurs de Noël, et un panneau Neige où tombent des flocons et des petits pères Noël. N’activez qu’un thème à la fois.',
+    },
+    logo: 'santa.svg',
+    contributes: {
+      items: [
+        { slot: 'agent.tools', id: 'snow', label: { en: 'Snow ❄️', fr: 'Neige ❄️' }, hint: { en: 'Let snow and little Santas fall 🎅', fr: 'Faire tomber la neige et les petits pères Noël 🎅' }, icon: 'logo', action: { 'panel.open': 'snow' } },
+        { slot: 'agent.menu', id: 'snow-menu', label: { en: '🎅 Let it snow ❄️', fr: '🎅 Faire neiger ❄️' }, icon: 'logo', action: { 'panel.open': 'snow' } },
+      ],
+      panels: [{ id: 'snow', title: { en: '❄️ Snow ❄️', fr: '❄️ Neige ❄️' }, page: 'snow.html' }],
+    },
+    app: '#0d1712', side: '#112019', main: '#14261d', s1: '#1a3024', s2: '#20382b', s3: '#284434', s4: '#30503e', s5: '#3b5f4a',
+    border: '#21392c', strong: '#3a5a47', text: '#eee8d8', bright: '#fffaf0', muted: '#b4bba8',
+    accent: '#f2c14e', link: '#8fc7ef', ok: '#6cc070', done: '#a8d672', err: '#ff6b6b', info: '#7fb8e6', purple: '#d88fd8',
+    override: { 'bg-tabs': '#5c1419', ink: '#6e1219' },
+  },
 }
 
 const VERSION = '0.1.0'
@@ -89,7 +108,7 @@ const CHECKS = [
   ['text', 'bg-main', 7], ['text', 'bg-sidebar', 7], ['text-muted', 'bg-main', 4.5], ['text-dim', 'bg-main', 4.5], ['text-3', 'surface-2', 4.5],
   ['ink', 'text', 7], ['accent-ink', 'accent', 4.5], ['accent', 'bg-main', 3], ['accent-link', 'bg-main', 4.5],
   ['wait-text', 'wait-bg', 7], ['wait-muted', 'wait-bg', 4.5], ['wait-btn-text', 'wait-btn', 4.5], ['text', 'option-on', 4.5],
-  ['ok-text', 'bg-main', 4.5], ['done-text', 'bg-main', 4.5], ['err-text', 'err-bg', 4.5], ['err-ink', 'err', 4.5], ['remote-text', 'bg-main', 4.5],
+  ['text', 'bg-tabs', 7], ['ink', 'ok', 4.5], ['ink', 'done', 4.5], ['ok-text', 'bg-main', 4.5], ['done-text', 'bg-main', 4.5], ['err-text', 'err-bg', 4.5], ['err-ink', 'err', 4.5], ['remote-text', 'bg-main', 4.5],
 ]
 
 function check(id, v) {
@@ -106,22 +125,22 @@ const manifest = (id, t, theme) => ({
   version: VERSION,
   api: 1,
   squadron: '>=0.47.0',
-  name: { en: `${t.name} theme`, fr: `Thème ${t.name}` },
-  description: {
+  name: typeof t.name === 'string' ? { en: `${t.name} theme`, fr: `Thème ${t.name}` } : t.name,
+  description: t.description ?? {
     en: `Recolors Squadron with a dark palette inspired by ${t.from.en}. Turn on one theme at a time.`,
     fr: `Recolore Squadron avec une palette sombre inspirée ${t.from.fr}. N’activez qu’un thème à la fois.`,
   },
-  logo: 'logo.svg',
-  contributes: { theme },
+  logo: t.logo ?? 'logo.svg',
+  contributes: { ...t.contributes, theme },
 })
 
-const built = Object.entries(THEMES).map(([id, t]) => [id, t, vars(t)])
+const built = Object.entries(THEMES).map(([id, t]) => [id, t, { ...vars(t), ...t.override }])
 if (!built.every(([id, , v]) => check(id, v))) process.exit(1)
 if (process.argv.includes('--check')) process.exit(0)
 
 for (const [id, t, v] of built) {
   mkdirSync(id, { recursive: true })
   writeFileSync(`${id}/extension.json`, JSON.stringify(manifest(id, t, v), null, 2) + '\n')
-  writeFileSync(`${id}/logo.svg`, logo(v))
+  if (!t.logo) writeFileSync(`${id}/logo.svg`, logo(v))
 }
 console.log(`${built.length} themes written: ${built.map(([id]) => id).join(', ')}`)

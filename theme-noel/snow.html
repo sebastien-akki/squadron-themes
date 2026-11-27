@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/_squadron/kit.css" />
+<style>
+  html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg-main, #14261d); }
+  .fall { position: absolute; top: -80px; pointer-events: none; user-select: none; animation: fall linear infinite; will-change: transform; }
+  .flake { filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7)); }
+  .dot { border-radius: 50%; background: #ffffff; }
+  .ground { position: absolute; left: -10%; right: -10%; bottom: -40px; height: min(80px, 30vh); border-radius: 50% 50% 0 0; background: #f4f6f8; }
+  @keyframes fall { to { transform: translate(var(--drift), calc(100vh + 160px)) rotate(var(--spin)); } }
+  @media (prefers-reduced-motion: reduce) { .fall { animation-duration: 90s !important; } }
+</style>
+</head>
+<body>
+<div class="ground"></div>
+<script>
+  const rand = (min, max) => min + Math.random() * (max - min)
+  const drop = (el, seconds, spin) => {
+    el.classList.add('fall')
+    el.style.left = `${rand(-2, 98)}%`
+    el.style.animationDuration = `${seconds}s`
+    el.style.animationDelay = `-${rand(0, seconds)}s`
+    el.style.setProperty('--drift', `${rand(-80, 80)}px`)
+    el.style.setProperty('--spin', `${rand(-spin, spin)}deg`)
+    document.body.prepend(el)
+  }
+  const image = (src, className, width) => {
+    const img = document.createElement('img')
+    img.src = src
+    img.alt = ''
+    img.className = className
+    img.style.width = `${width}px`
+    return img
+  }
+  for (let i = 0; i < 45; i++) {
+    const flake = image('flake.svg', 'flake', rand(10, 28))
+    flake.style.opacity = rand(0.6, 1)
+    drop(flake, rand(7, 15), 360)
+  }
+  for (let i = 0; i < 45; i++) {
+    const dot = document.createElement('span')
+    dot.className = 'dot'
+    dot.style.width = dot.style.height = `${rand(2, 5)}px`
+    dot.style.opacity = rand(0.4, 0.9)
+    drop(dot, rand(5, 12), 0)
+  }
+  for (let i = 0; i < 6; i++) drop(image('santa.svg', 'santa', 44), rand(10, 20), 40)
+</script>
+</body>
+</html>
