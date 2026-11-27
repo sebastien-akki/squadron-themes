@@ -4,8 +4,8 @@
   "api": 1,
   "squadron": ">=0.47.0",
   "name": {
-    "en": "Christmas theme",
-    "fr": "Thème Noël"
+    "en": "Christmas theme 🎅",
+    "fr": "Thème Noël 🎅"
   },
   "description": {
     "en": "Christmas colors, and a Snow panel where flakes and little Santas fall. Turn on one theme at a time.",
@@ -18,12 +18,24 @@
         "slot": "agent.tools",
         "id": "snow",
         "label": {
-          "en": "Snow",
-          "fr": "Neige"
+          "en": "Snow ❄️",
+          "fr": "Neige ❄️"
         },
         "hint": {
-          "en": "Let it snow",
-          "fr": "Faire tomber la neige"
+          "en": "Let snow and little Santas fall 🎅",
+          "fr": "Faire tomber la neige et les petits pères Noël 🎅"
+        },
+        "icon": "logo",
+        "action": {
+          "panel.open": "snow"
+        }
+      },
+      {
+        "slot": "agent.menu",
+        "id": "snow-menu",
+        "label": {
+          "en": "🎅 Let it snow ❄️",
+          "fr": "🎅 Faire neiger ❄️"
         },
         "icon": "logo",
         "action": {
@@ -35,8 +47,8 @@
       {
         "id": "snow",
         "title": {
-          "en": "Snow",
-          "fr": "Neige"
+          "en": "❄️ Snow ❄️",
+          "fr": "❄️ Neige ❄️"
         },
         "page": "snow.html"
       }
@@ -46,7 +58,7 @@
       "bg-sidebar": "#112019",
       "bg-main": "#14261d",
       "bg-rail": "#0f1c16",
-      "bg-tabs": "#162a1f",
+      "bg-tabs": "#5c1419",
       "surface-1": "#1a3024",
       "surface-2": "#20382b",
       "surface-3": "#284434",
@@ -66,7 +78,7 @@
       "text-muted": "#b4bba8",
       "text-dim": "#a4ac9a",
       "text-faint": "#647163",
-      "ink": "#0e1b14",
+      "ink": "#6e1219",
       "accent": "#f2c14e",
       "accent-ink": "#271f0c",
       "accent-soft": "#f9e3af",
